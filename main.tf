@@ -22,6 +22,13 @@ resource "aws_security_group" "main" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-
-
+  tags = merge(
+    var.common_tags,
+    {
+        Name = var.project_name
+    },
+    var.sg_tags
+  )
 }
+
+
